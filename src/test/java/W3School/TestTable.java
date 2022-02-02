@@ -6,28 +6,26 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.testng.annotations.BeforeMethod;
 
-import java.time.Duration;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.locators.RelativeLocator;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
-public class Table {
+public class TestTable {
 	WebDriver driver;
 	@Test
 
 	public void getTable7() {
 		driver.navigate().to("https://www.w3schools.com/html/html_tables.asp");
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		By cell = RelativeLocator.with(By.tagName("td")).toRightOf(By.xpath("//td[text()='Ernst Handel']"))
-				.below(By.xpath("//th[text()='Country']"));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
 
-		String text = driver.findElement(cell).getText();
+		String text = new W3School.PageTable(driver).getTextOfSpecificElement();
 
 		Assert.assertEquals(text, "Austria");
 
